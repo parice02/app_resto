@@ -4,16 +4,27 @@ import { View, StyleSheet, TouchableOpacity, Alert } from "react-native";
 import { Icon } from "native-base";
 
 import StarRating from "./StarRating";
+import OrderOption from "./order_option";
 import { first_letter } from "../data/utility";
 
 class Liste extends React.Component {
+  state = { see_option: false, data: null };
+
+  open_option = (data) => {
+    this.setState({ see_option: true, data: data });
+  };
+
+  close_option = () => {
+    this.setState({ see_option: false, data: null });
+  };
+
   render() {
     const { navigation, data } = this.props;
     return (
       <Block margin width={"90%"} style={styles.cards_wrapper}>
         <Block>
           <Text h2 marginBottom={20} center>
-            {first_letter(data.title)}
+            {data !== null ? first_letter(data.title) : null}
           </Text>
         </Block>
         {data.content !== null ? (
@@ -51,7 +62,7 @@ class Liste extends React.Component {
                     white
                     useForeground
                     onPress={() => {
-                      Alert.alert("Clicked");
+                      this.open_option(v);
                     }}
                   >
                     <Icon
@@ -68,6 +79,12 @@ class Liste extends React.Component {
           <Block center middle width>
             <Text>No data </Text>
           </Block>
+        )}
+        {this.state.see_option && (
+          <OrderOption
+            data={this.state.data}
+            close_option={this.close_option}
+          />
         )}
       </Block>
     );

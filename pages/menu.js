@@ -6,7 +6,7 @@ import List from "../components/list";
 
 import { get_response } from "../data/api";
 
-class Boissons extends React.Component {
+class Menu extends React.Component {
   state = { data: null, loading: true };
 
   get_data = async () => {
@@ -44,4 +44,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Boissons;
+export default Menu;

@@ -29,33 +29,43 @@ class Grid extends React.Component {
     const { navigation } = this.props;
     return (
       <Block center middle marginTop={"1x"} elevation={0}>
-        {this.render_items(this.cut)}
-        {this.data_cut.map((v, i) => (
-          <View key={i} style={styles.category_container}>
-            {v.map((s, j) => (
-              <TouchableOpacity
-                key={s.id}
-                style={styles.category_btn}
-                onPress={() => {
-                  s.stack_path
-                    ? navigation.navigate("menu_stack", { title: s.stack_path })
-                    : null;
-                }}
-              >
-                <View key={i} style={styles.category_icon}>
-                  <Icon
-                    name={s.icon}
-                    type="MaterialCommunityIcons"
-                    style={{
-                      fontSize: 50,
+        {this.props.data !== null ? (
+          <Block>
+            {this.render_items(this.cut)}
+            {this.data_cut.map((v, i) => (
+              <View key={i} style={styles.category_container}>
+                {v.map((s, j) => (
+                  <TouchableOpacity
+                    key={s.id}
+                    style={styles.category_btn}
+                    onPress={() => {
+                      s.stack_path
+                        ? navigation.navigate("menu_stack", {
+                            title: s.stack_path,
+                          })
+                        : null;
                     }}
-                  />
-                </View>
-                <Text style={styles.category_btn_txt}>{s.title}</Text>
-              </TouchableOpacity>
+                  >
+                    <View key={i} style={styles.category_icon}>
+                      <Icon
+                        name={s.icon}
+                        type="MaterialCommunityIcons"
+                        style={{
+                          fontSize: 50,
+                        }}
+                      />
+                    </View>
+                    <Text style={styles.category_btn_txt}>{s.title}</Text>
+                  </TouchableOpacity>
+                ))}
+              </View>
             ))}
-          </View>
-        ))}
+          </Block>
+        ) : (
+          <Block center middle width>
+            <Text>No data </Text>
+          </Block>
+        )}
       </Block>
     );
   }

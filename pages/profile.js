@@ -13,126 +13,112 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 //import files from "../assets/filesBase64";
 
-const ProfileScreen = () => {
-  const myCustomShare = async () => {
-    const shareOptions = {
-      message:
-        "Order your next meal from FoodFinder App. I've already ordered more than 10 meals on it.",
-      //url: files.appLogo,
-      // urls: [files.image1, files.image2]
-    };
-
-    try {
-      const ShareResponse = await Share.open(shareOptions);
-      console.log(JSON.stringify(ShareResponse));
-    } catch (error) {
-      console.log("Error => ", error);
-    }
-  };
-
-  return (
-    <Block scroll flex white>
-      <View style={styles.userInfoSection}>
-        <View style={{ flexDirection: "row", marginTop: 15 }}>
-          <Avatar.Image
-            source={require("../assets/user.png")}
-            size={80}
-            style={{ backgroundColor: "white" }}
-          />
-          <View style={{ marginLeft: 20 }}>
-            <Title
-              style={[
-                styles.title,
-                {
-                  marginTop: 15,
-                  marginBottom: 5,
-                },
-              ]}
-            >
-              Mohamed Zeba
-            </Title>
-            <Caption style={styles.caption}>@Muhamed_Zeba</Caption>
+class Profile extends React.Component {
+  render() {
+    return (
+      <Block scroll flex white>
+        <View style={styles.userInfoSection}>
+          <View style={{ flexDirection: "row", marginTop: 15 }}>
+            <Avatar.Image
+              source={require("../assets/user.png")}
+              size={80}
+              style={{ backgroundColor: "white" }}
+            />
+            <View style={{ marginLeft: 20 }}>
+              <Title
+                style={[
+                  styles.title,
+                  {
+                    marginTop: 15,
+                    marginBottom: 5,
+                  },
+                ]}
+              >
+                Mohamed Zeba
+              </Title>
+              <Caption style={styles.caption}>@Muhamed_Zeba</Caption>
+            </View>
           </View>
         </View>
-      </View>
 
-      <View style={styles.userInfoSection}>
-        <View style={styles.row}>
-          <Icon name="map-marker-radius" color="#777777" size={20} />
-          <Text style={{ color: "#777777", marginLeft: 20 }}>
-            Ouagadougou, Burkina Faso
-          </Text>
+        <View style={styles.userInfoSection}>
+          <View style={styles.row}>
+            <Icon name="map-marker-radius" color="#777777" size={20} />
+            <Text style={{ color: "#777777", marginLeft: 20 }}>
+              Ouagadougou, Burkina Faso
+            </Text>
+          </View>
+          <View style={styles.row}>
+            <Icon name="phone" color="#777777" size={20} />
+            <Text style={{ color: "#777777", marginLeft: 20 }}>
+              +226 - 00010203
+            </Text>
+          </View>
+          <View style={styles.row}>
+            <Icon name="email" color="#777777" size={20} />
+            <Text style={{ color: "#777777", marginLeft: 20 }}>
+              parice02@hotmail.com
+            </Text>
+          </View>
         </View>
-        <View style={styles.row}>
-          <Icon name="phone" color="#777777" size={20} />
-          <Text style={{ color: "#777777", marginLeft: 20 }}>
-            +226 - 00010203
-          </Text>
-        </View>
-        <View style={styles.row}>
-          <Icon name="email" color="#777777" size={20} />
-          <Text style={{ color: "#777777", marginLeft: 20 }}>
-            parice02@hotmail.com
-          </Text>
-        </View>
-      </View>
 
-      <View style={styles.infoBoxWrapper}>
-        <View
-          style={[
-            styles.infoBox,
-            {
-              borderRightColor: "#dddddd",
-              borderRightWidth: 1,
-            },
-          ]}
-        >
-          <Title>₹140.50</Title>
-          <Caption>Wallet</Caption>
+        <View style={styles.infoBoxWrapper}>
+          <View
+            style={[
+              styles.infoBox,
+              {
+                borderRightColor: "#dddddd",
+                borderRightWidth: 1,
+              },
+            ]}
+          >
+            <Title>₹140.50</Title>
+            <Caption>Wallet</Caption>
+          </View>
+          <View style={styles.infoBox}>
+            <Title>12</Title>
+            <Caption>Orders</Caption>
+          </View>
         </View>
-        <View style={styles.infoBox}>
-          <Title>12</Title>
-          <Caption>Orders</Caption>
+
+        <View style={styles.menuWrapper}>
+          <TouchableRipple onPress={() => {}}>
+            <View style={styles.menuItem}>
+              <Icon name="heart-outline" color="lightblue" size={25} />
+              <Text style={styles.menuItemText}>Your Favorites</Text>
+            </View>
+          </TouchableRipple>
+          <TouchableRipple onPress={() => {}}>
+            <View style={styles.menuItem}>
+              <Icon name="credit-card" color="lightblue" size={25} />
+              <Text style={styles.menuItemText}>Payment</Text>
+            </View>
+          </TouchableRipple>
+          <TouchableRipple onPress={() => {}}>
+            <View style={styles.menuItem}>
+              <Icon name="share-outline" color="lightblue" size={25} />
+              <Text style={styles.menuItemText}>Tell Your Friends</Text>
+            </View>
+          </TouchableRipple>
+          <TouchableRipple onPress={() => {}}>
+            <View style={styles.menuItem}>
+              <Icon name="account-check-outline" color="lightblue" size={25} />
+              <Text style={styles.menuItemText}>Support</Text>
+            </View>
+          </TouchableRipple>
+          <TouchableRipple onPress={() => {}}>
+            <View style={styles.menuItem}>
+              <Icon name="settings-outline" color="lightblue" size={25} />
+              <Text style={styles.menuItemText}>Settings</Text>
+            </View>
+          </TouchableRipple>
         </View>
-      </View>
+      </Block>
+    );
+  }
+}
 
-      <View style={styles.menuWrapper}>
-        <TouchableRipple onPress={() => {}}>
-          <View style={styles.menuItem}>
-            <Icon name="heart-outline" color="lightblue" size={25} />
-            <Text style={styles.menuItemText}>Your Favorites</Text>
-          </View>
-        </TouchableRipple>
-        <TouchableRipple onPress={() => {}}>
-          <View style={styles.menuItem}>
-            <Icon name="credit-card" color="lightblue" size={25} />
-            <Text style={styles.menuItemText}>Payment</Text>
-          </View>
-        </TouchableRipple>
-        <TouchableRipple onPress={() => {}}>
-          <View style={styles.menuItem}>
-            <Icon name="share-outline" color="lightblue" size={25} />
-            <Text style={styles.menuItemText}>Tell Your Friends</Text>
-          </View>
-        </TouchableRipple>
-        <TouchableRipple onPress={() => {}}>
-          <View style={styles.menuItem}>
-            <Icon name="account-check-outline" color="lightblue" size={25} />
-            <Text style={styles.menuItemText}>Support</Text>
-          </View>
-        </TouchableRipple>
-        <TouchableRipple onPress={() => {}}>
-          <View style={styles.menuItem}>
-            <Icon name="settings-outline" color="lightblue" size={25} />
-            <Text style={styles.menuItemText}>Settings</Text>
-          </View>
-        </TouchableRipple>
-      </View>
-    </Block>
-  );
-};
-
-export default ProfileScreen;
+export default Profile;
 
 const styles = StyleSheet.create({
   container: {

@@ -2,6 +2,7 @@ import React from "react";
 import { View } from "react-native";
 import * as Font from "expo-font";
 import { Ionicons } from "@expo/vector-icons";
+import { Provider as PaperProvider } from "react-native-paper";
 
 import MyDrawer from "./navigations/principal";
 
@@ -21,6 +22,10 @@ export default class App extends React.Component {
     if (this.state.loading) {
       return <View></View>;
     }
-    return <MyDrawer />;
+    return (
+      <PaperProvider>
+        <MyDrawer />
+      </PaperProvider>
+    );
   }
 }

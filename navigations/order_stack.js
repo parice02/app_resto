@@ -18,6 +18,7 @@ export default class MyStack extends React.Component {
       <Stack.Navigator
         mode={"card"}
         headerMode={"float"}
+        initialRouteName={"home_stack"}
         screenOptions={({ route, navigation }) => ({
           headerTitleAlign: "center",
           headerStyle: {

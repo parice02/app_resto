@@ -16,8 +16,6 @@ class Help extends React.Component {
           <Swiper
             height={slider_height}
             autoplay
-            //showsButtons={true}
-
             horizontal={true}
             autoplayTimeout={5}
           >
@@ -56,9 +54,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: "transparent",
     borderRadius: 10,
-    /* shadowOpacity: 1,
-    shadowColor: "black",
-    shadowRadius: 10, */
     borderWidth: 1,
   },
   slider_image: {
@@ -66,5 +61,6 @@ const styles = StyleSheet.create({
     width: "100%",
     alignSelf: "center",
     borderRadius: 10,
+    resizeMode: "contain",
   },
 });

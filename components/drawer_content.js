@@ -30,7 +30,7 @@ class DrawerMenu extends React.Component {
               icon={({ focused, size, color }) => <Icon name={"home"} />}
             />
             <DrawerItem
-              label="My orders"
+              label="My account"
               labelStyle={{ marginLeft: -16 }}
               onPress={() => this.props.navigation.navigate("profile_stack")}
               icon={({ focused, size, color }) => (
