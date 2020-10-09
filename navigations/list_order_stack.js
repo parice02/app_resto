@@ -3,12 +3,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { Icon } from "native-base";
 import { Block, Button } from "expo-ui-kit";
 
-import Order from "../pages/order";
-import MenuItems from "../pages/menu";
-import Details from "../pages/details";
-import Profile from "../pages/profile";
+import ListOrder from "../pages/list_order";
 import SearchBar from "../components/search_bar";
-import { first_letter } from "../data/utility";
 
 const Stack = createStackNavigator();
 
@@ -31,13 +27,13 @@ export default class MyStack extends React.Component {
               margin
               transparent
               onPress={() =>
-                route.name === "home_stack"
+                route.name === "list_stack"
                   ? navigation.toggleDrawer()
                   : navigation.goBack()
               }
             >
               <Icon
-                name={route.name === "home_stack" ? "menu" : "arrow-back"}
+                name={route.name === "list_stack" ? "menu" : "arrow-back"}
               />
             </Button>
           ),
@@ -58,37 +54,14 @@ export default class MyStack extends React.Component {
         })}
       >
         <Stack.Screen
-          name="home_stack"
-          component={Order}
-          options={{ title: "Home" }}
-        />
-        <Stack.Screen
-          name="menu_stack"
-          component={MenuItems}
-          options={(route) => ({
-            title: first_letter(route.route.params.title),
-          })}
-        />
-        <Stack.Screen
-          name="profile_stack"
-          component={Profile}
-          options={{ title: "Profile" }}
+          name="list_stack"
+          component={ListOrder}
+          options={{ title: "Liste Order" }}
         />
         <Stack.Screen
           name="search_stack"
           component={SearchBar}
           options={{ title: "Search", headerShown: false }}
-        /> 
-        <Stack.Screen
-          name="detail_stack"
-          component={Details}
-          options={{
-            title: "Détails",
-            headerTitle: false,
-            headerTransparent: true,
-            //headerBackTitleVisible: false,
-            //headerTintColor: "#fff",
-          }}
         />
       </Stack.Navigator>
     );

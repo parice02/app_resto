@@ -2,13 +2,14 @@ import React from "react";
 import { Icon } from "native-base";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Animated from "react-native-reanimated";
+import { connect } from "react-redux";
 
 import OrderStack from "./order_stack";
-import Other from "../pages/other";
+import OrderList from "./list_order_stack";
 
 const Tab = createBottomTabNavigator();
 
-export default class MyTab extends React.Component {
+class MyTab extends React.Component {
   render() {
     return (
       <Animated.View
@@ -16,29 +17,6 @@ export default class MyTab extends React.Component {
       >
         <Tab.Navigator
           initialRouteName={"home_tab"}
-          screenOptions={({ route }) => ({
-            tabBarIcon: ({ focused, color, size }) => {
-              let icon_name;
-              let type;
-              if (route.name === "home_tab") {
-                icon_name = focused ? "home" : "home";
-                type = focused ? "Entypo" : "AntDesign";
-              } else if (route.name === "other_tab") {
-                icon_name = focused
-                  ? "information-circle"
-                  : "information-circle-outline";
-                type = focused ? "Ionicons" : "Ionicons";
-              }
-              return (
-                <Icon
-                  name={icon_name}
-                  size={size}
-                  style={{ color: color }}
-                  type={type}
-                />
-              );
-            },
-          })}
           tabBarOptions={{
             activeTintColor: "lightblue",
             inactiveTintColor: "gray",
@@ -47,15 +25,46 @@ export default class MyTab extends React.Component {
           <Tab.Screen
             name="home_tab"
             component={OrderStack}
-            options={{ title: "Home" }}
+            options={{
+              title: "Home",
+              tabBarIcon: ({ color, size }) => (
+                <Icon
+                  name={"home"}
+                  size={size}
+                  style={{ color: color }}
+                  type={"Ionicons"}
+                />
+              ),
+            }}
           />
           <Tab.Screen
-            name="other_tab"
-            component={Other}
-            options={{ tabBarBadge: 3, title: "Other" }}
+            name="list_stack"
+            component={OrderList}
+            options={{
+              tabBarBadge: this.props.orders_count || null,
+              title: "Order List",
+
+              tabBarIcon: ({ color, size }) => (
+                <Icon
+                  name={"cart"}
+                  size={size}
+                  style={{ color: color }}
+                  type={"Ionicons"}
+                />
+              ),
+            }}
           />
         </Tab.Navigator>
       </Animated.View>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    ...state,
+    orders_count: state.order_list.length,
+  };
+};
+
+export default connect(mapStateToProps)(MyTab);

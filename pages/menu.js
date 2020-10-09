@@ -1,38 +1,32 @@
 import React from "react";
 import { Block } from "expo-ui-kit";
-import { StyleSheet, StatusBar, ActivityIndicator } from "react-native";
+import { StyleSheet } from "react-native";
 
 import List from "../components/list";
-
-import { get_response } from "../data/api";
+import Card from "../components/card";
+import { choice_data } from "../data/utility";
 
 class Menu extends React.Component {
-  state = { data: null, loading: true };
-
-  get_data = async () => {
-    const retour = await get_response(this.props.route.params.title);
-    this.setState({ data: retour, loading: false });
-  };
-
-  componentDidMount() {
-    this.get_data();
-  }
+  state = { data: choice_data(this.props.route.params.title) };
 
   render() {
     const { navigation } = this.props;
-
     return (
-      <Block>
-        {this.state.loading ? (
-          <Block white middle center>
-            <ActivityIndicator size={50} />
-          </Block>
-        ) : (
-          <Block white scroll padding>
-            <List data={this.state.data} navigation={navigation} />
-            <StatusBar style="auto" />
-          </Block>
-        )}
+      <Block white safe>
+        <Block scroll>
+          <List
+            data={this.state.data}
+            navigation={navigation}
+            render={(item, index, open_option, navigation) => (
+              <Card
+                data={item}
+                key={index}
+                open_option={open_option}
+                navigation={navigation}
+              />
+            )}
+          />
+        </Block>
       </Block>
     );
   }

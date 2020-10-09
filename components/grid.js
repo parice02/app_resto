@@ -41,7 +41,7 @@ class Grid extends React.Component {
                     onPress={() => {
                       s.stack_path
                         ? navigation.navigate("menu_stack", {
-                            title: s.stack_path,
+                            title: s.title,
                           })
                         : null;
                     }}
@@ -95,8 +95,8 @@ const styles = StyleSheet.create({
     height: 90,
     backgroundColor: "lightblue",
     borderRadius: 10,
-    shadowColor: "black",
-    shadowOpacity: 1,
+    shadowColor: "lightblue",
+    shadowOpacity: 0.7,
   },
   category_btn_txt: {
     alignSelf: "center",

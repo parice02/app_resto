@@ -19,7 +19,7 @@ class Help extends React.Component {
             horizontal={true}
             autoplayTimeout={5}
           >
-            {categories.map((v, i) => (
+            {categories.content.map((v, i) => (
               <View key={i} style={styles.slide}>
                 <Image
                   source={v.icon2}
@@ -46,15 +46,15 @@ const styles = StyleSheet.create({
     marginTop: 10,
     justifyContent: "center",
     alignSelf: "center",
-    borderRadius: 8,
+    borderWidth: 0.1,
+    borderRadius: 10,
   },
   wrapper: {},
   slide: {
     flex: 1,
     justifyContent: "center",
     backgroundColor: "transparent",
-    borderRadius: 10,
-    borderWidth: 1,
+    width: "100%",
   },
   slider_image: {
     height: "100%",

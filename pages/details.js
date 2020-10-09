@@ -1,20 +1,11 @@
 import React from "react";
 import { Block, Text } from "expo-ui-kit";
-import {
-  View,
-  StyleSheet,
-  StatusBar,
-  Image,
-  Dimensions,
-  Platform,
-} from "react-native";
+import { View, StyleSheet, Image, Dimensions, Platform } from "react-native";
 import HeaderImageScrollView, {
   TriggeringView,
 } from "react-native-image-header-scroll-view";
 import { Icon } from "native-base";
 import * as animatable from "react-native-animatable";
-
-import * as data_ from "../data/app_data";
 
 const MIN_HEIGHT = Platform.OS === "ios" ? 90 : 55;
 const MAX_HEIGHT = 350;
@@ -25,15 +16,14 @@ class Detail extends React.Component {
     const native_title_view = React.createRef();
 
     return (
-      <Block flex={1} white>
-        <StatusBar barStyle={"light-content"} translucent />
+      <Block safe white>
         <HeaderImageScrollView
           maxHeight={MAX_HEIGHT}
           minHeight={MIN_HEIGHT}
           maxOverlayOpacity={0.6}
           minOverlayOpacity={0.3}
           renderHeader={() => (
-            <Image source={data_.categories[3].icon2} style={styles.image} />
+            <Image source={data.icon2} style={styles.image} />
           )}
           renderForeground={() => (
             <View style={styles.titleContainer}>
@@ -64,8 +54,8 @@ class Detail extends React.Component {
                   style={{ fontSize: 16, color: "#ff6347" }}
                   type={"FontAwesome"}
                 />
-                <Text style={{ marginHorizontal: 2 }}>5</Text>
-                <Text style={{}}>(99)</Text>
+                <Text style={{ marginHorizontal: 2 }}>{data.star.count}</Text>
+                <Text style={{}}>({data.star.vote})</Text>
               </View>
             </View>
           </TriggeringView>

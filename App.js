@@ -3,8 +3,12 @@ import { View } from "react-native";
 import * as Font from "expo-font";
 import { Ionicons } from "@expo/vector-icons";
 import { Provider as PaperProvider } from "react-native-paper";
+import { Provider } from "react-redux";
+import { persistStore } from "redux-persist";
+import { PersistGate } from "redux-persist/es/integration/react";
 
 import MyDrawer from "./navigations/principal";
+import Store from "./store/conf_store";
 
 export default class App extends React.Component {
   state = { loading: true };
@@ -22,10 +26,17 @@ export default class App extends React.Component {
     if (this.state.loading) {
       return <View></View>;
     }
+
+    const persistor = persistStore(Store);
+    persistor.purge();
     return (
-      <PaperProvider>
-        <MyDrawer />
-      </PaperProvider>
+      <Provider store={Store}>
+        <PersistGate persistor={persistor}>
+          <PaperProvider>
+            <MyDrawer />
+          </PaperProvider>
+        </PersistGate>
+      </Provider>
     );
   }
 }
