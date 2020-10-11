@@ -2,9 +2,9 @@
   "expo": {
     "name": "app_resto",
     "slug": "app_resto",
-    "version": "1.0.0",
+    "version": "0.5.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/splash.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -15,14 +15,15 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
+       "bundleIdentifier": "com.parice02.appresto",
+      "buildNumber": "0.5.0",
       "supportsTablet": true
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "android": {
-      "package": "com.parice02.restoapp",
-
+      "package": "com.parice02.appresto",
       "versionCode": 1
     }
   }
