@@ -3,7 +3,7 @@ import { Button, Text } from "expo-ui-kit";
 import { View, StyleSheet, TouchableOpacity, Image } from "react-native";
 import { Icon } from "native-base";
 
-import StarRating from "./StarRating";
+import StarRating from "./star_rating";
 
 class Card extends React.Component {
   render() {

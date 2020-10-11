@@ -15,7 +15,7 @@ class Liste extends React.Component {
   };
 
   render() {
-    const { navigation, data } = this.props;
+    const { navigation, data, render } = this.props;
     return (
       <Block margin width={"90%"}>
         {data ? (
@@ -30,7 +30,7 @@ class Liste extends React.Component {
             {data.content && (
               <Block>
                 {data.content.map((v, i) =>
-                  this.props.render(v, i, this.open_option, navigation)
+                  render(v, i, this.open_option, navigation)
                 )}
               </Block>
             )}

@@ -9,7 +9,7 @@ class Card extends React.Component {
       <View style={styles.card}>
         <View style={styles.card_img_wrapper}>
           <Image
-            source={data.icon2}
+            source={data.icon}
             resizeMode="contain"
             style={styles.card_img}
           />

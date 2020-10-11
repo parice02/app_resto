@@ -1,7 +1,6 @@
 import React from "react";
-import { TouchableOpacity, StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import { Block } from "expo-ui-kit";
-import { Icon } from "native-base";
 
 class Grid extends React.Component {
   constructor(props) {
@@ -26,38 +25,15 @@ class Grid extends React.Component {
   };
 
   render() {
-    const { navigation } = this.props;
+    const { navigation, data, render } = this.props;
     return (
       <Block center middle marginTop={"1x"} elevation={0}>
-        {this.props.data !== null ? (
+        {data !== null ? (
           <Block>
             {this.render_items(this.cut)}
             {this.data_cut.map((v, i) => (
               <View key={i} style={styles.category_container}>
-                {v.map((s, j) => (
-                  <TouchableOpacity
-                    key={s.id}
-                    style={styles.category_btn}
-                    onPress={() => {
-                      s.stack_path
-                        ? navigation.navigate("menu_stack", {
-                            title: s.title,
-                          })
-                        : null;
-                    }}
-                  >
-                    <View key={i} style={styles.category_icon}>
-                      <Icon
-                        name={s.icon}
-                        type="MaterialCommunityIcons"
-                        style={{
-                          fontSize: 50,
-                        }}
-                      />
-                    </View>
-                    <Text style={styles.category_btn_txt}>{s.title}</Text>
-                  </TouchableOpacity>
-                ))}
+                {v.map((s, j) => render(s, j, navigation))}
               </View>
             ))}
           </Block>
@@ -78,31 +54,6 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     marginTop: 20,
     marginBottom: 5,
-  },
-  category_btn: {
-    flex: 1,
-    width: "100%",
-    marginHorizontal: 0,
-    alignSelf: "center",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  category_icon: {
-    borderWidth: 0,
-    alignItems: "center",
-    justifyContent: "center",
-    width: 90,
-    height: 90,
-    backgroundColor: "lightblue",
-    borderRadius: 10,
-    shadowColor: "lightblue",
-    shadowOpacity: 0.7,
-  },
-  category_btn_txt: {
-    alignSelf: "center",
-    marginTop: 5,
-    color: "#000",
-    textTransform: "capitalize",
   },
 });
 

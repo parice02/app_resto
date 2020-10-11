@@ -11,6 +11,7 @@ class Menu extends React.Component {
 
   render() {
     const { navigation } = this.props;
+
     return (
       <Block white safe>
         <Block scroll>
