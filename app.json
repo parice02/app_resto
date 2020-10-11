@@ -4,7 +4,7 @@
     "slug": "app_resto",
     "version": "0.5.0",
     "orientation": "portrait",
-    "icon": "./assets/splash.png",
+    "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
