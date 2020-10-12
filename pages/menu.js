@@ -1,5 +1,5 @@
 import React from "react";
-import { Block } from "expo-ui-kit";
+import { Block, Text } from "expo-ui-kit";
 import { StyleSheet } from "react-native";
 
 import List from "../components/list";
@@ -14,20 +14,26 @@ class Menu extends React.Component {
 
     return (
       <Block white safe>
-        <Block scroll>
-          <List
-            data={this.state.data}
-            navigation={navigation}
-            render={(item, index, open_option, navigation) => (
-              <Card
-                data={item}
-                key={index}
-                open_option={open_option}
-                navigation={navigation}
-              />
-            )}
-          />
-        </Block>
+        {this.state.data ? (
+          <Block scroll>
+            <List
+              data={this.state.data}
+              navigation={navigation}
+              render={(item, index, open_option, navigation) => (
+                <Card
+                  data={item}
+                  key={index}
+                  open_option={open_option}
+                  navigation={navigation}
+                />
+              )}
+            />
+          </Block>
+        ) : (
+          <Block middle center>
+            <Text>No data</Text>
+          </Block>
+        )}
       </Block>
     );
   }

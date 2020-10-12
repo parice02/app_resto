@@ -8,8 +8,7 @@ export function choice_data(value) {
   switch (value) {
     case "boissons":
       return data.boissons;
-      break;
     default:
-      return data.categories;
+      return null;
   }
 }

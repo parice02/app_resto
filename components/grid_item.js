@@ -1,6 +1,6 @@
 import React from "react";
 import { TouchableOpacity, StyleSheet, View, Text } from "react-native";
-import { Icon } from "native-base";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 class GridItem extends React.Component {
   render() {
@@ -9,21 +9,13 @@ class GridItem extends React.Component {
       <TouchableOpacity
         style={styles.category_btn}
         onPress={() => {
-          data.stack_path
-            ? navigation.navigate("menu_stack", {
-                title: data.title,
-              })
-            : null;
+          navigation.navigate("menu_stack", {
+            title: data.title,
+          });
         }}
       >
         <View style={styles.category_icon}>
-          <Icon
-            name={data.icon}
-            type="MaterialCommunityIcons"
-            style={{
-              fontSize: 50,
-            }}
-          />
+          <MaterialCommunityIcons name={data.icon} size={50} />
         </View>
         <Text style={styles.category_btn_txt}>{data.title}</Text>
       </TouchableOpacity>

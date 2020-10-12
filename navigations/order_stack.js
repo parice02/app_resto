@@ -78,7 +78,7 @@ export default class MyStack extends React.Component {
           name="search_stack"
           component={SearchBar}
           options={{ title: "Search", headerShown: false }}
-        /> 
+        />
         <Stack.Screen
           name="detail_stack"
           component={Details}

@@ -51,7 +51,7 @@ export const categories = {
       stack_path: "",
     },
     {
-      title: "Garniture",
+      title: "garniture",
       id: 8,
       icon2: require("../assets/images/caroussel/garniture.jpg"),
       icon: "food-apple",
@@ -68,7 +68,6 @@ export const boissons = {
       icon: "food-fork-drink",
       star: { count: 4, vote: 10 },
       icon2: require("../assets/images/boissons/coca.png"),
-      stack_path: "detail_stack",
       details: "café, thé, tisane",
       price: "100",
     },
@@ -78,7 +77,6 @@ export const boissons = {
       star: { count: 3, vote: 20 },
       icon2: require("../assets/images/boissons/coca.png"),
       icon: "food-fork-drink",
-      stack_path: "",
       price: "200",
     },
     {
@@ -87,7 +85,6 @@ export const boissons = {
       icon: "food-fork-drink",
       star: { count: 1, vote: 10 },
       icon2: require("../assets/images/boissons/coca.png"),
-      stack_path: "",
       price: "50",
     },
     {
@@ -96,7 +93,6 @@ export const boissons = {
       icon: "food-fork-drink",
       star: { count: 4, vote: 10 },
       icon2: require("../assets/images/boissons/coca.png"),
-      stack_path: "",
       price: "600",
     },
     {
@@ -105,7 +101,6 @@ export const boissons = {
       icon: "food-fork-drink",
       star: { count: 4, vote: 90 },
       icon2: require("../assets/images/boissons/coca_zero.png"),
-      stack_path: "",
       price: "600",
     },
     {
@@ -114,7 +109,6 @@ export const boissons = {
       icon: "food-fork-drink",
       star: { count: 5, vote: 100 },
       icon2: require("../assets/images/boissons/coca_light.png"),
-      stack_path: "",
       price: "600",
     },
     {
@@ -123,7 +117,6 @@ export const boissons = {
       icon: "food-fork-drink",
       star: { count: 4, vote: 50 },
       icon2: require("../assets/images/boissons/fanta.png"),
-      stack_path: "",
       price: "600",
     },
     {
@@ -141,7 +134,6 @@ export const boissons = {
       icon: "food-fork-drink",
       star: { count: 2, vote: 98 },
       icon2: require("../assets/images/boissons/sprite.png"),
-      stack_path: "",
       price: "500",
     },
     {
@@ -150,8 +142,26 @@ export const boissons = {
       icon: "food-fork-drink",
       star: { count: 4, vote: 45 },
       icon2: require("../assets/images/boissons/sprite.png"),
-      stack_path: "",
       price: "600",
     },
   ],
 };
+
+export const data_list = [
+  "boisson",
+  "caco",
+  "café",
+  "jus",
+  "bissap",
+  "yaourt",
+  "riz",
+  "sauce",
+  "arachide",
+  "tomate",
+  "bouillon",
+  "sprite",
+  "capuccino",
+  "eau",
+  "garniture",
+  "dessert",
+];

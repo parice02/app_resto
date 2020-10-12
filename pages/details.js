@@ -7,6 +7,9 @@ import HeaderImageScrollView, {
 import { Icon } from "native-base";
 import * as animatable from "react-native-animatable";
 
+import Stars from "../components/star_rating2";
+import { first_letter } from "../data/utility";
+
 const MIN_HEIGHT = Platform.OS === "ios" ? 90 : 55;
 const MAX_HEIGHT = 350;
 
@@ -48,14 +51,14 @@ class Detail extends React.Component {
               style={{ flexDirection: "row", justifyContent: "space-between" }}
             >
               <Text style={styles.title}>Overview</Text>
-              <View style={{ flexDirection: "row", alignItems: "flex-end" }}>
-                <Icon
-                  name={"star"}
-                  style={{ fontSize: 16, color: "#ff6347" }}
-                  type={"FontAwesome"}
-                />
-                <Text style={{ marginHorizontal: 2 }}>{data.star.count}</Text>
-                <Text style={{}}>({data.star.vote})</Text>
+              <View
+                style={{
+                  flexDirection: "row",
+                  alignItems: "baseline",
+                }}
+              >
+                <Stars rating={data.star.count} num_star={5} />
+                <Text>({data.star.vote})</Text>
               </View>
             </View>
           </TriggeringView>
@@ -92,8 +95,8 @@ const styles = StyleSheet.create({
   image: {
     height: MAX_HEIGHT,
     width: Dimensions.get("window").width,
-    alignSelf: "stretch",
-    resizeMode: "cover",
+    alignSelf: "center",
+    resizeMode: "contain",
   },
   title: {
     fontSize: 20,
@@ -143,7 +146,8 @@ const styles = StyleSheet.create({
   imageTitle: {
     color: "white",
     backgroundColor: "transparent",
-    fontSize: 24,
+    fontSize: 25,
+    textTransform: "capitalize",
   },
   navTitleView: {
     height: MIN_HEIGHT,
@@ -154,10 +158,11 @@ const styles = StyleSheet.create({
   },
   navTitle: {
     color: "white",
-    fontSize: 18,
+    fontSize: 30,
     backgroundColor: "transparent",
+    textTransform: "capitalize",
   },
   sectionLarge: {
-    minHeight: 300,
+    minHeight: 200,
   },
 });

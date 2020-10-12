@@ -12,30 +12,25 @@ import { Icon } from "native-base";
 import { Block, Text } from "expo-ui-kit";
 import Animated, { Easing } from "react-native-reanimated";
 
+import { data_list } from "../data/app_data";
+
 const { Value, timing } = Animated;
 const { width, height } = Dimensions.get("window");
 
 const display_duration = 500;
 
 export default class SearchBar extends React.Component {
-  state = {
-    focused: false,
-    keyword: "",
-    result: [
-      "result 1",
-      "result 2",
-      "result 3",
-      "result 4",
-      "result 5",
-      "result 6",
-    ],
-  };
   constructor(props) {
     super(props);
     this.input_box_translate = new Value(width);
     this.back_button_opacity = new Value(0);
     this.content_translate = new Value(height);
     this.content_opacity = new Value(0);
+    this.state = {
+      focused: false,
+      keyword: "",
+      result: [],
+    };
   }
 
   on_focus = () => {
@@ -115,11 +110,24 @@ export default class SearchBar extends React.Component {
     this.on_focus();
   }
 
+  search = (word) => {
+    if (word !== "") {
+      this.setState({ result: [] });
+      data_list.forEach((v) => {
+        v.includes(word.toLowerCase())
+          ? this.setState((prev) => ({ result: [...prev.result, v] }))
+          : null;
+      });
+    } else {
+      this.setState({ result: [] });
+    }
+  };
+
   render() {
     let { result, keyword, focused } = this.state;
     return (
-      <Block white flex>
-        <Block safe flex style={styles.header_safe_area}>
+      <Block white flex safe>
+        <Block flex style={styles.header_safe_area}>
           <View style={styles.header}>
             <View style={styles.header_inner}>
               <Animated.View
@@ -144,9 +152,9 @@ export default class SearchBar extends React.Component {
                   clearButtonMode={"always"}
                   autoFocus={true}
                   value={keyword}
-                  onChangeText={(value) =>
-                    this.setState(() => ({ keyword: value }))
-                  }
+                  onChangeText={(value) => {
+                    this.setState({ keyword: value }, () => this.search(value));
+                  }}
                   style={styles.input}
                 />
                 <TouchableOpacity
@@ -173,7 +181,7 @@ export default class SearchBar extends React.Component {
           <Block safe flex>
             <View style={styles.content_inner}>
               <View style={styles.separator} />
-              {this.state.keyword === "" ? (
+              {keyword === "" ? (
                 <Block center middle style={styles.image_placeholder_container}>
                   <Image
                     style={styles.image_placeholder}
@@ -184,14 +192,17 @@ export default class SearchBar extends React.Component {
                   </Text>
                 </Block>
               ) : (
-                <Block safe scroll flex>
-                  {result.length !== 0 &&
-                    result.map((v, i) => (
-                      <View key={i} style={styles.search_item}>
-                        <Icon style={styles.item_icon} name={"search"} />
-                        <Text margin>{v}</Text>
-                      </View>
-                    ))}
+                <Block safe>
+                  {result.length !== 0 && (
+                    <Block scroll>
+                      {result.map((v, i) => (
+                        <View key={i} style={styles.search_item}>
+                          <Icon style={styles.item_icon} name={"search"} />
+                          <Text margin>{v}</Text>
+                        </View>
+                      ))}
+                    </Block>
+                  )}
                 </Block>
               )}
             </View>

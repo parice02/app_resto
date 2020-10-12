@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Text } from "expo-ui-kit";
 import { View, StyleSheet, TouchableOpacity, Image } from "react-native";
-import { Icon } from "native-base";
+import Octicons from "react-native-vector-icons/Octicons";
 
 import StarRating from "./star_rating";
 
@@ -12,9 +12,7 @@ class Card extends React.Component {
       <TouchableOpacity
         style={styles.card}
         onPress={() => {
-          data.stack_path
-            ? navigation.navigate("detail_stack", { data: data })
-            : null;
+          navigation.navigate("detail_stack", { data: data });
         }}
       >
         <View style={styles.card_img_wrapper}>
@@ -43,7 +41,7 @@ class Card extends React.Component {
               this.props.open_option(data);
             }}
           >
-            <Icon name={"plus"} type={"Octicons"} style={{ fontSize: 20 }} />
+            <Octicons name={"plus"} size={25} />
           </Button>
         </View>
       </TouchableOpacity>
